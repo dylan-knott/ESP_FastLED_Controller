@@ -1,0 +1,114 @@
+#ifndef IRHANDLE_HPP
+#define IRHANDLE_HPP
+
+#include <main.hpp>
+#include <IRremote.hpp>
+#include <main_data.hpp>
+
+/*SET UP IR RECIEVER*/
+#define IR_RECEIVE_PIN 2
+
+const int8_t brightnessButtonDelta = 10;
+const int8_t speedButtonDelta = 10;
+
+// Enumerate remote buttons for the no-name remote
+// NOTE: Keep colors at the end of this enumeration
+enum remote_buttons_e
+{
+    POWER,
+    PAUSE,
+    BRIGHT_UP,
+    BRIGHT_DOWN,
+    QUICK,
+    SLOW,
+    EFFECT_DIY1,
+    EFFECT_DIY2,
+    EFFECT_DIY3,
+    EFFECT_DIY4,
+    EFFECT_DIY5,
+    EFFECT_DIY6,
+    EFFECT_AUTO,
+    EFFECT_FLASH,
+    EFFECT_JUMP3,
+    EFFECT_JUMP7,
+    EFFECT_FADE3,
+    EFFECT_FADE7,
+    COLOR_RED_UP,
+    COLOR_RED_DOWN,
+    COLOR_GREEN_UP,
+    COLOR_GREEN_DOWN,
+    COLOR_BLUE_UP,
+    COLOR_BLUE_DOWN,
+    COLOR_RED,
+    COLOR_DARK_ORANGE,
+    COLOR_ORANGE,
+    COLOR_LIGHT_ORANGE,
+    COLOR_YELLOW,
+    COLOR_GREEN,
+    COLOR_LIGHT_GREEN,
+    COLOR_LIGHT_CYAN,
+    COLOR_CYAN,
+    COLOR_DARK_CYAN,
+    COLOR_BLUE,
+    COLOR_ROYAL_BLUE,
+    COLOR_PLUM,
+    COLOR_VIOLET,
+    COLOR_DARK_PINK,
+    COLOR_WHITE,
+    COLOR_WARM_1,
+    COLOR_WARM_2,
+    COLOR_COOL_1,
+    COLOR_COOL_2,
+    NUM_REMOTE_BUTTONS
+};
+
+static const long remote_codes[NUM_REMOTE_BUTTONS] = {
+    3208707840,
+    3191996160,
+    2740780800,
+    2724069120,
+    3893886720,
+    3960733440,
+    4077715200,
+    24061003520,
+    4044291840,
+    4144561920,
+    4127850240,
+    4111138560,
+    4027580160,
+    4094426880,
+    4211408640,
+    4194696960,
+    4177985280,
+    4161273600,
+    3944021760,
+    4010868480,
+    3927310080,
+    3994156800,
+    3910598400,
+    3977445120,
+    2807627520,
+    2874474240,
+    2941320960,
+    3810328320,
+    3877175040,
+    2790915840,
+    2857762560,
+    1465105997,
+    3793616640,
+    3860463360,
+    3125149440,
+    3058302720,
+    2991456000,
+    3776904960,
+    3893727949,
+    3141861120,
+    3075014400,
+    3008167680,
+    3760193280,
+    3827040000};
+
+void init_IR(void);
+void loop_IR(void);
+
+#endif
