@@ -1,0 +1,13 @@
+{
+    "name": "Effects",
+    "version": "1.0.0",
+    "description": "Effect implementations for the FastLED controller.",
+    "authors":
+    {
+        "name": "Dylan Knott",
+        "email": "dgknott33@gmail.com"
+    },
+    "frameworks": "*",
+    "platforms": "*",
+    "headers": "effect.hpp"
+}

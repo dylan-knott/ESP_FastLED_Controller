@@ -1,3 +1,4 @@
 {
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "cmake.sourceDirectory": "C:/Users/dgkno/OneDrive/Documents/PlatformIO/Projects/230526-131627-nodemcuv2/.pio/libdeps/nodemcuv2/FastLED"
 }

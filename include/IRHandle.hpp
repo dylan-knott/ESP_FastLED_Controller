@@ -1,67 +1,75 @@
-#ifndef IRHANDLE_HPP
-#define IRHANDLE_HPP
+/**
+* IRHandle.hpp
+* @brief Definitions of IR codes and public IR receiver functions
+* @author Dylan Knott
+**/
+#ifndef IR_HANDLE_HPP
+#define IR_HANDLE_HPP
 
-#include <main.hpp>
-#include <IRremote.hpp>
 #include <main_data.hpp>
+#include <stdint.h>
+#include <IRremoteESP8266.h>
+#include <IRrecv.h>
 
 /*SET UP IR RECIEVER*/
 #define IR_RECEIVE_PIN 2
 
-const int8_t brightnessButtonDelta = 10;
-const int8_t speedButtonDelta = 10;
+// Define remote codes for no-name remote
+#define POWER                       64U
+#define PAUSE                       65U
+#define BRIGHT_UP                   92U
+#define BRIGHT_DOWN                 93U
+#define QUICK                       23U
+#define SLOW                        19U
+#define EFFECT_DIY1                 12U
+#define EFFECT_DIY2                 13U
+#define EFFECT_DIY3                 14U
+#define EFFECT_DIY4                 8U
+#define EFFECT_DIY5                 9U
+#define EFFECT_DIY6                 10U
+#define EFFECT_AUTO                 15U
+#define EFFECT_FLASH                11U
+#define EFFECT_JUMP3                4U
+#define EFFECT_JUMP7                5U
+#define EFFECT_FADE3                6U
+#define EFFECT_FADE7                7U
+#define COLOR_RED_UP                20U
+#define COLOR_RED_DOWN              16U
+#define COLOR_GREEN_UP              21U
+#define COLOR_GREEN_DOWN            17U
+#define COLOR_BLUE_UP               22U
+#define COLOR_BLUE_DOWN             18U
+#define COLOR_RED                   88U
+#define COLOR_DARK_ORANGE           84U
+#define COLOR_ORANGE                80U
+#define COLOR_LIGHT_ORANGE          28U
+#define COLOR_YELLOW                24U
+#define COLOR_GREEN                 89U
+#define COLOR_LIGHT_GREEN           85U
+#define COLOR_LIGHT_CYAN            81U
+#define COLOR_CYAN                  29U
+#define COLOR_DARK_CYAN             25U
+#define COLOR_BLUE                  69U
+#define COLOR_ROYAL_BLUE            73U
+#define COLOR_PLUM                  77U
+#define COLOR_VIOLET                30U
+#define COLOR_DARK_PINK             26U
+#define COLOR_WHITE                 68U
+#define COLOR_WARM_1                72U
+#define COLOR_WARM_2                76U
+#define COLOR_COOL_1                31U
+#define COLOR_COOL_2                27U
 
-// Enumerate remote buttons for the no-name remote
-// NOTE: Keep colors at the end of this enumeration
-enum remote_buttons_e
-{
-    POWER,
-    PAUSE,
-    BRIGHT_UP,
-    BRIGHT_DOWN,
-    QUICK,
-    SLOW,
-    EFFECT_DIY1,
-    EFFECT_DIY2,
-    EFFECT_DIY3,
-    EFFECT_DIY4,
-    EFFECT_DIY5,
-    EFFECT_DIY6,
-    EFFECT_AUTO,
-    EFFECT_FLASH,
-    EFFECT_JUMP3,
-    EFFECT_JUMP7,
-    EFFECT_FADE3,
-    EFFECT_FADE7,
-    COLOR_RED_UP,
-    COLOR_RED_DOWN,
-    COLOR_GREEN_UP,
-    COLOR_GREEN_DOWN,
-    COLOR_BLUE_UP,
-    COLOR_BLUE_DOWN,
-    COLOR_RED,
-    COLOR_DARK_ORANGE,
-    COLOR_ORANGE,
-    COLOR_LIGHT_ORANGE,
-    COLOR_YELLOW,
-    COLOR_GREEN,
-    COLOR_LIGHT_GREEN,
-    COLOR_LIGHT_CYAN,
-    COLOR_CYAN,
-    COLOR_DARK_CYAN,
-    COLOR_BLUE,
-    COLOR_ROYAL_BLUE,
-    COLOR_PLUM,
-    COLOR_VIOLET,
-    COLOR_DARK_PINK,
-    COLOR_WHITE,
-    COLOR_WARM_1,
-    COLOR_WARM_2,
-    COLOR_COOL_1,
-    COLOR_COOL_2,
-    NUM_REMOTE_BUTTONS
-};
 
+namespace IR_REMOTE {
+
+//Define a type to reference remote codes with correct size
+typedef unsigned long remote_code_t;
+
+static const int8_t brightness_button_delta = 10;
+static const int8_t speed_button_delta = 10;
+
+/*TODO: Remove if the above solution works
 static const long remote_codes[NUM_REMOTE_BUTTONS] = {
     3208707840,
     3191996160,
@@ -106,9 +114,13 @@ static const long remote_codes[NUM_REMOTE_BUTTONS] = {
     3075014400,
     3008167680,
     3760193280,
-    3827040000};
+    3827040000
+    };
+*/
 
 void init_IR(void);
 void loop_IR(void);
+
+}
 
 #endif
